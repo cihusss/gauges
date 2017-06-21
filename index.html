@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Gauges</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+<!-- <link href="https://tripod.triadretail.com/sites/informationtechnology/Test/Shared%20Documents/style.css" rel="stylesheet" type="text/css" media="screen"> -->
+</head>
+
+<body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.3/papaparse.min.js"></script>
+
+
+</script>
+	<div class="container">
+
+		<h1>Triad Performance - Year-to-Date vs. Projection</h1>
+		<div id="titletext"></div>
+		<div id="gauge_div" style="width:800px; height: 410px;"></div>
+
+		<div class="resultrow">
+			<div class="resultleft"><div id="revpercent"></div><p>Net Revenue to Plan</p></div>
+			<div class="resultright"><div id="profitpercent"></div><p>Profit to Plan</p></div>
+		</div>
+
+		<!-- <div id="selectorBtns">
+			<input type="radio" name="period" checked="true"/><p class="selectorLabels">April</p>
+			<input type="radio" name="period"/><p class="selectorLabels">May</p>
+			<input type="radio" name="period"/><p class="selectorLabels">December</p>
+		</div> -->
+
+		<div class="nav"></div>
+
+	</div>
+</body>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+
+    var gauge;
+		var data;
+		var period;
+		var navTemplate = '<label class="selectorLabels"><input type="radio" name="period">';
+
+		google.charts.load('current', {
+      'packages': ['gauge']
+    });
+    google.charts.setOnLoadCallback(drawGauge);
+
+    var gaugeOptions = {
+      min: 0,
+      max: 140,
+      greenFrom: 100,
+      greenTo: 140,
+      yellowFrom: 70,
+      yellowTo: 100,
+      redFrom: 0,
+      redTo: 70,
+      minorTicks: 2,
+      majorTicks: ['0', '', '20', '', '40', '', '60', '', '80', '', '100', '', '120', '', '140'],
+			redColor: '#cc0000'
+    };
+
+    function drawGauge() {
+      gaugeData = new google.visualization.DataTable();
+      gaugeData.addColumn('number', 'Revenue');
+      gaugeData.addColumn('number', 'Profit');
+      gaugeData.addRows(2);
+      gaugeData.setCell(0, 0, 0);
+      gaugeData.setCell(0, 1, 0);
+
+      gauge = new google.visualization.Gauge(document.getElementById('gauge_div'));
+
+			gauge.draw(gaugeData, gaugeOptions);
+			loadGauge(0);
+    }
+
+		// $.getJSON('data.json', function(result) {
+		// 	data = result;
+		// 	console.log(data);
+		// });
+
+		Papa.parse('data.csv', {
+		// Papa.parse('https://tripod.triadretail.com/sites/informationtechnology/Test/Shared%20Documents/data.csv', {
+			download: true,
+      header: true,
+      dynamicTyping: true,
+			delimiter: ",",
+      complete: function(result) {
+        data = result;
+				makeNav(data);
+      }
+    });
+
+		function makeNav(data) {
+			length = data.data.length - 1;
+			for (var i = 0; i < length; i++) {
+			    console.log(data.data[i].Period);
+					// $('.nav').append(data.data[i].Period + ' ');
+					$('.nav').append(navTemplate + '<span>' + data.data[i].Period.substring(0, 3) + '</span></label>');
+			}
+		}
+
+		// $('#selectorBtns > input').on('click', function() {
+		// 	periodIndex = $('#selectorBtns > input').index(this);
+		// 	loadGauge(periodIndex);
+		// });
+
+		$(document).on('click', '.nav > label', function() {
+			periodIndex = $('.nav > label').index(this);
+			loadGauge(periodIndex);
+		});
+
+		function loadGauge(periodIndex) {
+			$('#titletext').html(data.data[periodIndex].Period);
+			$('#revpercent').html(data.data[periodIndex].Revenue + '%');
+			$('#profitpercent').html(data.data[periodIndex].Profit + '%');
+			gaugeData.setValue(0, 0, data.data[periodIndex].Revenue);
+      gaugeData.setValue(0, 1, data.data[periodIndex].Profit);
+      gauge.draw(gaugeData, gaugeOptions);
+			visualize(periodIndex);
+		}
+
+		function visualize(periodIndex) {
+
+			$('.nav > label:first-of-type > input').attr('checked', 'true');
+
+			if (data.data[periodIndex].Revenue >= 100) {
+				$('#revpercent').css('color', 'rgb(16, 150, 24)');
+			}
+			else if (data.data[periodIndex].Revenue < 100 && data.data[periodIndex].Revenue >= 70) {
+				$('#revpercent').css('color', 'rgb(255, 153, 0)');
+			}
+			else if (data.data[periodIndex].Revenue < 70) {
+				$('#revpercent').css('color', 'rgb(220, 57, 18)');
+			}
+
+			if (data.data[periodIndex].Profit >= 100) {
+				$('#profitpercent').css('color', 'rgb(16, 150, 24)');
+			}
+			else if (data.data[periodIndex].Profit < 100 && data.data[periodIndex].Revenue >= 70) {
+				$('#profitpercent').css('color', 'rgb(255, 153, 0)');
+			}
+			else if (data.data[periodIndex].Profit < 70) {
+				$('#profitpercent').css('color', 'rgb(220, 57, 18)');
+			}
+		}
+
+});
+
+</script>
+
+</html>

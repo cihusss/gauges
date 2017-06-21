@@ -1,0 +1,17 @@
+[
+ {
+   "Period": "April",
+   "Revenue": 101,
+   "Profit": 105
+ },
+ {
+   "Period": "May",
+   "Revenue": 97,
+   "Profit": 96
+ },
+ {
+   "Period": "December",
+   "Revenue": 132,
+   "Profit": 125
+ }
+]
