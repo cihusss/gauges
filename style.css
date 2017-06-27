@@ -61,12 +61,12 @@ body {
 	height: auto;
 	/* margin: 50px auto; */
 	padding: 50px 0;
-	background: url(pattern02.png);
-	border-top: 50px solid black;
-	border-bottom: 50px solid black;
+	/* background: white; */
+	/*border-top: 50px solid black;*/
+	/*border-bottom: 50px solid black;*/
 }
 h1 {
-	color: white;
+	color: #333 !important;
 	text-align: center;
 	font-family: Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";
 	font-weight: normal;
@@ -74,7 +74,7 @@ h1 {
 	margin-bottom: 18px;
 }
 #titletext {
-	color: white;
+	color: #333;
 	text-align: center;
 	font-family: Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";
 	font-weight: normal;
@@ -86,34 +86,38 @@ h1 {
 	width: 820px;
 	height: 50px;
 	margin-bottom: 10px;
-	color: white;
+	/* color: white; */
 	font-family: Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";
 	margin: 0 auto;
+	/* padding-left: 20px; */
 }
 .resultleft {
 	float: left;
 	width: 50%;
 	text-align: center;
+	margin-left: 10px;
 }
 .resultright {
 	width: 50%;
 	float: left;
 	text-align: center;
+	margin-left: -10px;
 }
 
 #revpercent {
 	font-size: 24px;
 	font-weight: bold;
-	color: #333;
+	/* color: #333 !important; */
 	/* width: 220px; */
 	margin-bottom: 10px;
-	padding-left: 30px;
+	/* padding-left: 20px; */
 }
 #profitpercent {
 	font-size: 24px;
 	font-weight: bold;
 	color: #333;
 	margin-bottom: 10px;
+	/* padding-left: 10px; */
 }
 
 #selectorBtns {
@@ -128,7 +132,7 @@ h1 {
 	/* font-weight: bold; */
 	vertical-align: middle;
 	background: #404040;
-	padding: 10px 18px 10px 12px;
+	padding: 8px 18px 10px 12px;
 	border-radius: 22px;
 	text-transform: uppercase;
 }
@@ -142,10 +146,10 @@ h1 {
 .nav { margin: 30px auto 0 auto; text-align: center; }
 
 circle {
-	fill: rgba(243, 243, 243, 0);
-	box-shadow: 0 0 25px 10px #616161;
-	stroke: rgb(255, 255, 255);
-	stroke-width: 2px;
+	/* fill: rgba(243, 243, 243, 0); */
+	/* box-shadow: 0 0 25px 10px #616161; */
+	/* stroke: rgb(255, 255, 255); */
+	/* stroke-width: 2px; */
 }
 
 text {
@@ -153,7 +157,7 @@ text {
 	font-size: 16px;
 	/* font-weight: bold; */
 	color-interpolation: inherit;
-	fill: rgb(255, 255, 255);
+	/* fill: rgb(255, 255, 255); */
 }
 
 #gauge_div { margin: 0 auto; }
