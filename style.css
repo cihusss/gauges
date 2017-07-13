@@ -5,7 +5,7 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
+/*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -24,18 +24,18 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-}
+}*/
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1.2;
 }
-ol, ul {
+/*ol, ul {
 	list-style: none;
-}
+}*/
 blockquote, q {
 	quotes: none;
 }
@@ -73,6 +73,30 @@ h1 {
 	font-size: 24px;
 	margin-bottom: 18px;
 }
+
+h2 {
+	color: #666 !important;
+	text-align: left;
+	font-family: Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";
+	font-weight: normal;
+	font-size: 26px;
+	max-width: 60%;
+	line-height: 1.2em;
+}
+
+.container p, .container li {
+	font-family: Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";
+	font-weight: normal;
+	max-width: 60%;
+	margin: 10px auto;
+	color: #666;
+	line-height: 1.2em;
+}
+
+.container p { text-align: center; font-size: 16px; }
+.container p.conf { background: rgba(0,0,0,0.15); margin-top: 40px; padding: 10px; text-align: left; }
+.container li { font-size: 14px; }
+
 #titletext {
 	color: #333;
 	text-align: center;
@@ -143,7 +167,7 @@ h1 {
     vertical-align: text-bottom;
 }
 
-.nav { margin: 30px auto 0 auto; text-align: center; }
+.nav { margin: 30px auto 70px auto; text-align: center; }
 
 circle {
 	/* fill: rgba(243, 243, 243, 0); */

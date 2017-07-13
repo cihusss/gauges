@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Performance Gauges</title>
-<link href="style.css" rel="stylesheet" type="text/css" media="screen">
-<!-- <link href="https://tripod.triadretail.com/sites/informationtechnology/Test/Shared%20Documents/style.css" rel="stylesheet" type="text/css" media="screen"> -->
+<!-- <link href="style.css" rel="stylesheet" type="text/css" media="screen"> -->
+<link href="https://tripod.triadretail.com/PerformanceGaugeData/style.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 
 <body>
@@ -17,7 +17,10 @@
 </script>
 	<div class="container">
 
-		<h1>Triad Performance - Year-to-Date vs. Projection</h1>
+		<p><strong>Performance Gauges</strong> provide a snapshot of Triad's Net Revenue and Profit percentages to plan. Updated on or around the 15th of each month, they offer a window into our financial performance.</p>
+		<p>Company expenses are closely monitored each month and control measures are in place to ensure costs are pacing to plan. Team members should remain mindful of areas such as travel, entertainment and other discretionary spending which impact our annual probability.</p>
+
+
 		<div id="titletext"></div>
 		<div id="gauge_div" style="width:800px; height: 410px;"></div>
 
@@ -33,6 +36,13 @@
 		</div> -->
 
 		<div class="nav"></div>
+
+		<h2>What's the difference between Net Revenue and Net Profit?</h2>
+		<ul>
+			<li><strong>Net Revenue</strong> = Gross Revenue (what we earn from customers before we pay anyone else) minus payments due to our publishers and any third-party costs associated with campaigns/programs</li>
+			<li><strong>Net Profit</strong> = Net Revenue minus all other expenses (salaries, benefits, travel, office costs, IT costs, etc.)</li>
+		</ul>
+		<p class="conf"><strong>CONFIDENTIAL:</strong> This information is for Triad internal use only. DO NOT DISTRIBUTE.</p>
 
 	</div>
 </body>
@@ -83,8 +93,8 @@
 		// 	console.log(data);
 		// });
 
-		Papa.parse('data.csv', {
-		// Papa.parse('https://tripod.triadretail.com/sites/informationtechnology/Test/Shared%20Documents/data.csv', {
+		// Papa.parse('data.csv', {
+		Papa.parse('https://tripod.triadretail.com/PerformanceGaugeData/data.csv', {
 			download: true,
       header: true,
       dynamicTyping: true,
