@@ -17,11 +17,12 @@
 </script>
 	<div class="container">
 
-		<p><strong>Performance Gauges</strong> provide a snapshot of Triad's Net Revenue and Profit percentages to plan. Updated on or around the 15th of each month, they offer a window into our financial performance.</p>
-		<p>Company expenses are closely monitored each month and control measures are in place to ensure costs are pacing to plan. Team members should remain mindful of areas such as travel, entertainment and other discretionary spending which impact our annual probability.</p>
+		<p><strong>Performance Gauges</strong> provide a snapshot of Triad's Net Revenue and Profit percentages to plan. Updated on or around the 15th of each month, they offer a view into our financial performance.</p>
+		<p>Company expenses are closely monitored each month, and control measures are in place to ensure costs are pacing to plan. Team members should remain mindful of areas such as travel, entertainment and other discretionary spending, which impact our annual profitability.</p>
 
 
 		<div id="titletext"></div>
+		<div class="nav"></div>
 		<div id="gauge_div" style="width:800px; height: 410px;"></div>
 
 		<div class="resultrow">
@@ -35,20 +36,18 @@
 			<input type="radio" name="period"/><p class="selectorLabels">December</p>
 		</div> -->
 
-		<div class="nav"></div>
-
 		<h2>What's the difference between Net Revenue and Net Profit?</h2>
 		<ul>
 			<li><strong>Net Revenue</strong> = Gross Revenue (what we earn from customers before we pay anyone else) minus payments due to our publishers and any third-party costs associated with campaigns/programs</li>
 			<li><strong>Net Profit</strong> = Net Revenue minus all other expenses (salaries, benefits, travel, office costs, IT costs, etc.)</li>
 		</ul>
-		<p class="conf"><strong>CONFIDENTIAL:</strong> This information is for Triad internal use only. DO NOT DISTRIBUTE.</p>
+		<p class="conf"><strong>CONFIDENTIAL:</strong> This information is for Triad internal use only.<br>DO NOT DISTRIBUTE.</p>
 
 	</div>
 </body>
 
 	<script type="text/javascript">
-	$(document).ready(function() {
+	// $(document).ready(function() {
 
     var gauge;
 		var data;
@@ -85,7 +84,7 @@
       gauge = new google.visualization.Gauge(document.getElementById('gauge_div'));
 
 			gauge.draw(gaugeData, gaugeOptions);
-			loadGauge(0);
+			loadGauge(2);
     }
 
 		// $.getJSON('data.json', function(result) {
@@ -114,15 +113,33 @@
 			}
 		}
 
+		$(document).on('DOMNodeInserted', '.nav > label', function(e) {
+			$('.nav > label:last > input').prop('checked', true);
+		});
+
 		// $('#selectorBtns > input').on('click', function() {
 		// 	periodIndex = $('#selectorBtns > input').index(this);
 		// 	loadGauge(periodIndex);
 		// });
 
-		$(document).on('click', '.nav > label', function() {
+		$('.container').on('click', '.nav > label', function() {
 			periodIndex = $('.nav > label').index(this);
 			loadGauge(periodIndex);
+			$(document).off('DOMNodeInserted');
+			// $('.nav > label:last > input').prop('checked', true);
 		});
+
+		// $('.nav').on({
+		//    DOMNodeInserted : function(){
+		//       // alert('I have been added dynamically');
+		// 			$('.nav > label:last > input').prop('checked', true);
+		// 			// $('.nav > label:last').trigger('click');
+		//    }
+		// });
+
+
+
+		// $('.nav > label:first').trigger('click');
 
 		function loadGauge(periodIndex) {
 			$('#titletext').html(data.data[periodIndex].Period);
@@ -159,7 +176,7 @@
 			}
 		}
 
-});
+// });
 
 </script>
 

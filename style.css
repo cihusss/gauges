@@ -94,7 +94,7 @@ h2 {
 }
 
 .container p { text-align: center; font-size: 16px; }
-.container p.conf { background: rgba(0,0,0,0.15); margin-top: 40px; padding: 10px; text-align: left; }
+.container p.conf { background: rgba(0,0,0,0.15); margin-top: 40px; padding: 10px; text-align: center; }
 .container li { font-size: 14px; }
 
 #titletext {
@@ -109,10 +109,9 @@ h2 {
 .resultrow {
 	width: 820px;
 	height: 50px;
-	margin-bottom: 10px;
 	/* color: white; */
 	font-family: Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";
-	margin: 0 auto;
+	margin: 0 auto 60px auto;
 	/* padding-left: 20px; */
 }
 .resultleft {
@@ -167,7 +166,7 @@ h2 {
     vertical-align: text-bottom;
 }
 
-.nav { margin: 30px auto 70px auto; text-align: center; }
+.nav { margin: 30px auto 20px auto; text-align: center; }
 
 circle {
 	/* fill: rgba(243, 243, 243, 0); */
